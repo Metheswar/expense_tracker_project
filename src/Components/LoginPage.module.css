@@ -1,0 +1,67 @@
+/* LoginPage.module.css */
+
+.loginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4; /* Set a background color for the entire page */
+  }
+
+  h1{
+    color: white;
+  }
+  
+  .formContainer {
+    background-color: #7C9D96;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    height: max-content;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  
+  .formGroup {
+    margin-bottom: 15px;
+    width: 100%; /* Make sure form elements take up the entire width */
+  }
+  
+  .label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%; /* Button takes up full width */
+  }
+  
+  .p {
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .p:hover {
+    color: black;
+    text-decoration: underline;
+  }
+  
