@@ -1,47 +1,53 @@
-/* Apply general styling to the expense list container */
 .expense-list-container {
-    margin: 20px auto;
-    max-width: 800px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    margin: 20px;
   }
   
-  /* Style the premium button */
-  .premium-button {
-    background-color: #f39c12;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  /* Style the expense table */
   .expense-table {
     width: 100%;
     border-collapse: collapse;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .expense-table th,
   .expense-table td {
-    padding: 12px;
+    padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ccc;
   }
   
   .expense-table th {
-    background-color: #f2f2f2;
+    background-color: #f5f5f5;
   }
   
-  /* Style the total expenses footer */
+  .expense-table tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+  
   .total-expenses {
     font-weight: bold;
     text-align: right;
-    padding-top: 10px;
+    padding-right: 10px;
   }
   
+  .premium-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .premium-button:hover {
+    background-color: #0056b3;
+  }
+  .btn{
+    margin-right: 10px;
+    width: auto;
+    background-color: green;
+  }
+  .btn:hover{
+    background-color: greenyellow;
+    color: black;
+  }

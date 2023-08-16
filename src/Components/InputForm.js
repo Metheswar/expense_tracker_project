@@ -4,10 +4,10 @@ import Context from '../Store/Context';
 
 const InputForm = () => {
   const context = useContext(Context);
-  const amountRef = useRef();
-  const descriptionRef = useRef();
-  const dateRef = useRef();
-  const categoryRef = useRef();
+  const amountRef = context.amountRef;
+  const descriptionRef = context.descriptionRef;
+  const dateRef = context.dateRef;
+  const categoryRef = context.categoryRef;
 
   const submitHandler = (event) => {
     event.preventDefault();

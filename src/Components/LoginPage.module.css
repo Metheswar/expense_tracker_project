@@ -9,11 +9,12 @@
   }
 
   .h1{
-    color: white;
+    color: black;
   }
   
   .formContainer {
-    background-color: #7C9D96;
+    background-color: white;
+    border: 1px solid #ccc;
     border-radius: 8px;
     padding: 20px;
     width: 300px;
@@ -55,7 +56,7 @@
   }
   
   .p {
-    color: white;
+    color: black;
     cursor: pointer;
     margin-top: 10px;
   }

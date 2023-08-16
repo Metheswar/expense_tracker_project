@@ -9,6 +9,14 @@ const ExpenseList = () => {
   const handleDeleteExpense = (id) => {
     context.deleteExpense(id);
   };
+  const handleEditExpense = (id,amount,description,category,date) =>{
+    context.deleteExpense(id);
+    context.amountRef.current.value = amount;
+    context.descriptionRef.current.value = description;
+    context.categoryRef.current.value = category;
+    context.dateRef.current.value = date;
+
+  }
 
   return (
     <div className="expense-list-container">
@@ -35,8 +43,9 @@ const ExpenseList = () => {
               <td>{expense.date}</td>
               <td>{expense.category}</td>
               <td>
+              <button onClick={() => handleEditExpense(expense.id,expense.amount,expense.description,expense.category,expense.date)} className='btn'>Edit</button>
+                <button onClick={() => handleDeleteExpense(expense.id)} className='btn'>Delete</button>
                 
-                <button onClick={() => handleDeleteExpense(expense.id)}>Delete</button>
               </td>
             </tr>
           ))}

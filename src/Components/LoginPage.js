@@ -9,11 +9,46 @@ const LoginPage = () => {
   const emailRef = useRef();
   const passwordRef = useRef(); 
   const navigate = useNavigate();
-
+  const[idtoken,setIdtoken] = useState('');
+  const[signUpSuccess,setSignUpSuccess] = useState(false);
   const switchHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
+const idTokenHandler = (token) =>{
+  setIdtoken(token)
+}
 
+const verifyEmailHandler = async (token,Email) =>{
+  const url = 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBsBi6XuiXEAJS8LypGcACrNuK5h8i494Y'
+  try{
+    const response = await fetch(url,{
+      method:'POST',
+       body: JSON.stringify({
+         idToken : token
+       }),
+       headers:{
+        'Content-Type': 'application/json'
+      },
+    });
+    if(response.ok){
+      const data = await response.json(); 
+      console.log(data);
+      if(data.users[0].emailVerified){
+       context.loginHandler(token,Email); 
+       
+      }
+      else{
+        alert('verify your email to continue')
+      }
+      
+    } else{
+      const errorData = await response.json();
+      alert(errorData.error.message);
+    }
+  } catch(error){
+    console.error('Error occurred:', error);
+  }
+}
   const SubmitHandler = async (event) =>{
 event.preventDefault();
 const enteredEmail = emailRef.current.value;
@@ -35,8 +70,8 @@ if (isLogin) {
      if (response.ok) {
        const data = await response.json();
        console.log(data)
-      // loginHandler(data.idToken,enteredEmail);
-      context.loginHandler(data.idToken,enteredEmail);       
+      await verifyEmailHandler(data.idToken,enteredEmail)
+           
      } else {
        const errorData = await response.json();
        alert(errorData.error.message);
@@ -65,9 +100,12 @@ if (isLogin) {
 
        if (response.ok) {
          const data = await response.json();
-        switchHandler();
+         console.log(data)
+        await setSignUpSuccess(true)
+        await idTokenHandler(data.idToken)
+       
          alert("Account created Successfully!!")
-         setIsLogin(true)
+         
 
        } else {
          const errorData = await response.json();
@@ -80,10 +118,48 @@ if (isLogin) {
      } finally{
        emailRef.current.value = ''
        passwordRef.current.value = ''
+    
      }
+
+  
+   
    }
   }
-
+useEffect(() =>{
+if(signUpSuccess){
+  const verify = async() =>{
+    const url = 'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBsBi6XuiXEAJS8LypGcACrNuK5h8i494Y';
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+            requestType: "VERIFY_EMAIL",
+            idToken: idtoken,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        alert("verify email")
+      } else {
+        const errorData = await response.json();
+        alert(errorData.error.message);
+        // Handle error during profile update, if needed
+      }
+    } catch (error) {
+      console.error('Error occurred:', error);
+    } finally{
+      setSignUpSuccess(false);
+      switchHandler();
+    }
+ 
+  }
+  verify();
+}
+},[idtoken])
   useEffect(()=>{
     if(context.Login){
         navigate('/home')

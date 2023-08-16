@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/*" element={<LoginPage />} />
        {context.Login &&  <Route path='/home' element={<Home />} /> }
-       {context.Login &&  <Route path='/profile' element={<Profile />} /> }
+       {context.Login && context.update && <Route path='/profile' element={<Profile />} /> }
       </Routes>
     </Router>
   );
