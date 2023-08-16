@@ -105,7 +105,7 @@ localStorage.setItem("email",urlEmail)
   }, [expenses]);
 
   useEffect(() => {
-    if (email & Login) {
+    if (email && Login) {
       const fetchCartItems = async () => {
         try {
           const url = `https://dependable-fuze-322211-default-rtdb.firebaseio.com/${email}/Expenses.json`;
