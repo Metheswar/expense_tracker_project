@@ -1,0 +1,47 @@
+/* Apply general styling to the expense list container */
+.expense-list-container {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  /* Style the premium button */
+  .premium-button {
+    background-color: #f39c12;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Style the expense table */
+  .expense-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .expense-table th,
+  .expense-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .expense-table th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Style the total expenses footer */
+  .total-expenses {
+    font-weight: bold;
+    text-align: right;
+    padding-top: 10px;
+  }
+  

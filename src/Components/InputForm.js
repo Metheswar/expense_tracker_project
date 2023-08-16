@@ -14,6 +14,7 @@ const InputForm = () => {
     const parts = dateRef.current.value.split('-');
     const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
     const expense = {
+      id: Math.random(),
       amount: parseFloat(amountRef.current.value),
       description: descriptionRef.current.value,
       date: formattedDate,

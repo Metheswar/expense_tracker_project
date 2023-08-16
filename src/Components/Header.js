@@ -13,7 +13,7 @@ context.logoutHandler();
 }
   return (
     <header className={classes.header}>
-      <h1><NavLink to='/'>Expense Tracker</NavLink></h1>
+      <h1><NavLink to='/home'>Expense Tracker</NavLink></h1>
       <nav>
         <ul>
         {!context.update &&           <li>

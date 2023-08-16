@@ -1,49 +1,56 @@
-import React, { useContext, useEffect } from 'react'
-import Context from '../Store/Context'
+import React, { useContext } from 'react';
+import Context from '../Store/Context';
+import './ExpenseList.css'; // Import your CSS for styling
 
 const ExpenseList = () => {
-    const context = useContext(Context);
-    const Expenses = context.expenses;
+  const context = useContext(Context);
+  const Expenses = context.expenses;
 
+  const handleDeleteExpense = (id) => {
+    context.deleteExpense(id);
+  };
 
-    return (
-    <>
-   {context.premium && <button onClick={()=> context.premiumBuyedHandler()}>premium buy</button>}
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Amount
-                    </th>
-                    <th>
-                        Description
-                    </th>
-                    <th>
-                        Date
-                    </th>
-                    <th>
-                        Category
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {Expenses.map((expense) => (
-                    <tr key={expense.id}> {/* Add a unique key for each row */}
-                        <td>{expense.amount}</td>
-                        <td>{expense.description}</td>
-                        <td>{expense.date}</td>
-                        <td>{expense.category}</td>
-                    </tr>
-                ))}
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colSpan="4">Total Expenses: {context.totalExpenses}</td>
-                </tr>
-            </tfoot>
-        </table>
-        </>
-    )
-}
+  return (
+    <div className="expense-list-container">
+      {context.premium && (
+        <button onClick={() => context.premiumBuyedHandler()} className="premium-button">
+          Premium Buy
+        </button>
+      )}
+      <table className="expense-table">
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Expenses.map((expense) => (
+            <tr key={expense.id}>
+              <td>₹{expense.amount.toFixed(2)}</td>
+              <td>{expense.description}</td>
+              <td>{expense.date}</td>
+              <td>{expense.category}</td>
+              <td>
+                
+                <button onClick={() => handleDeleteExpense(expense.id)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan="4" className="total-expenses">
+              Total Expenses: ₹{context.totalExpenses.toFixed(2)}
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  );
+};
 
 export default ExpenseList;
