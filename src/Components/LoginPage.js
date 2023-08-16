@@ -93,7 +93,7 @@ if (isLogin) {
   return (
     <div className={styles.loginPage}>
       <div className={styles.formContainer}>
-        <h1> {isLogin ? "Login" : "Signup"} </h1>
+        <h1 className={styles.h1}> {isLogin ? "Login" : "Signup"} </h1>
         <form onSubmit={SubmitHandler}>
           <div className={styles.formGroup}>
             <label htmlFor='email' className={styles.label}>Email:</label>

@@ -4,14 +4,18 @@ import LoginPage from './Components/LoginPage';
 import Home from './Components/Home';
 
 import Context from './Store/Context';
+import Profile from './Components/Profile';
+import Header from './Components/Header';
 function App() {
   const context = useContext(Context);
   return (
     <Router>
+      {context.Login && <Header />}
       <Routes>
         <Route path="/" element={<LoginPage />} />
+        <Route path="/*" element={<LoginPage />} />
        {context.Login &&  <Route path='/home' element={<Home />} /> }
-       
+       {context.Login &&  <Route path='/profile' element={<Profile />} /> }
       </Routes>
     </Router>
   );
