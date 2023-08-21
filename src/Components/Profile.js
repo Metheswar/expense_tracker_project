@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Context from '../Store/Context';
-import { isDisabled } from '@testing-library/user-event/dist/utils';
+import styles from './Profile.module.css'
 
 
 const Profile = () => {
@@ -9,6 +9,7 @@ const Profile = () => {
     const token = localStorage.getItem('token');
     const name = useRef();
     const email = useRef();
+    const[disabled,setDisabled] = useState(false)
    
     const submitHandler = async (event) =>{
         event.preventDefault();
@@ -67,6 +68,7 @@ const fetchUpdateDetails = async () =>{
         name.current.value= data.users[0].displayName || '';
         email.current.value = data.users[0].email || '';
         context.nameHandler(data.users[0].displayName)
+        setDisabled(true)
           }
       } else {
         const errorData = await response.json();
@@ -78,7 +80,7 @@ const fetchUpdateDetails = async () =>{
     }
 }
         fetchUpdateDetails();
-    },[context.Login])
+    },[context.Login,context.token])
   return (
     <div className="InputContainer">
         <form onSubmit={submitHandler}>
@@ -89,10 +91,12 @@ const fetchUpdateDetails = async () =>{
         type="text"
         required
         ref={name}
+        className={styles.name}
+        
       />
 
       <label>Email: </label>
-      <input type="email" required ref={email} />
+      <input type="email" required ref={email} className={styles.email} disabled={disabled} />
       
       <button type='submit'>Update</button>
 

@@ -42,7 +42,7 @@ const InputForm = () => {
           <input type="number" min="1" ref={amountRef} />
 
           <label>Description: </label>
-          <input type="text" ref={descriptionRef} />
+          <input className='description' type="text" ref={descriptionRef} />
 
           <label>Date: </label>
           <input type="date" ref={dateRef} />
