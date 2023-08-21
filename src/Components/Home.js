@@ -1,19 +1,18 @@
-import React, { useContext, useEffect } from 'react'
-import Context from '../Store/Context'
-
-import Header from './Header';
+import React, { useContext, useEffect } from 'react';
+import Context from '../Store/Context';
 import InputForm from './InputForm';
 import ExpenseList from './ExpenseList';
+
 
 const Home = () => {
     const context = useContext(Context);
 
-  return (
-    <>
-    <InputForm />
-    <ExpenseList />
-    </>
-  )
-}
+    return (
+        <>
+            <InputForm />
+            <ExpenseList />
+        </>
+    );
+};
 
-export default Home
+export default Home;
