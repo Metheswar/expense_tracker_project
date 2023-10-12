@@ -73,7 +73,7 @@ const fetchUpdateDetails = async () =>{
       } else {
         const errorData = await response.json();
         alert(errorData.error.message);
-        // Handle error during profile update, if needed
+    
       }
     } catch (error) {
       console.error('Error occurred:', error);
