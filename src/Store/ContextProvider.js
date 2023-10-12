@@ -35,7 +35,7 @@ const ContextProvider = (props) => {
                 throw new Error('Failed to store data into Firebase.');
               }
     
-              // alert('Data stored successfully!');
+             
             } catch (error) {
               console.error('Error:', error);
             }
@@ -115,7 +115,7 @@ localStorage.setItem("email",urlEmail)
   useEffect(() => {
     const storeCartItems = async () => {
       if (email && Login) {
-        // Check if the user is logged in and not logged out
+  
         const url = `https://dependable-fuze-322211-default-rtdb.firebaseio.com/${email}/Expenses.json`;
         try {
           const response = await fetch(url, {
@@ -130,7 +130,7 @@ localStorage.setItem("email",urlEmail)
             throw new Error('Failed to store data into Firebase.');
           }
 
-          // alert('Data stored successfully!');
+  
         } catch (error) {
           console.error('Error:', error);
         }
