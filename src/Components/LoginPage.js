@@ -75,7 +75,7 @@ if (isLogin) {
      } else {
        const errorData = await response.json();
        alert(errorData.error.message);
-       // Handle error during signup, if needed
+
      }
     } catch(error){
      console.error('Error occurred:', error);
@@ -110,10 +110,10 @@ if (isLogin) {
        } else {
          const errorData = await response.json();
          alert(errorData.error.message);
-         // Handle error during signup, if needed
+
        }
      } catch (error) {
-       // Handle any other errors that may occur during the fetch
+      
        console.error('Error occurred:', error);
      } finally{
        emailRef.current.value = ''
