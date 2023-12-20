@@ -32,7 +32,7 @@ const downloadExpenses = () => {
 };
   return (
     <header className={classes.header}>
-      <h1><NavLink to='/home'>Expense Tracker</NavLink></h1>
+      <h1><NavLink to='/home'>ExpenseTrack Pro</NavLink></h1>
       <h3>{context.name}</h3>
       <nav>
         <ul>
